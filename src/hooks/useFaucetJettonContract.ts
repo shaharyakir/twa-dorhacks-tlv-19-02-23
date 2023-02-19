@@ -42,6 +42,9 @@ export function useFaucetJettonContract() {
     mint: () => {
       faucetJettonContract?.sendMintFromFaucet(sender, Address.parse(wallet!));
     },
+    burn: (amount: bigint) => {
+      jwContract?.sendBurn(sender, amount);
+    },
     jettonWalletAddress: jwContract?.address.toString(),
     balance: isFetching ? null : data,
   };

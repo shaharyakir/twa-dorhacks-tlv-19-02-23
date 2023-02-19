@@ -11,7 +11,7 @@ import {
 
 export function Jetton() {
   const { connected } = useTonConnect();
-  const { mint, jettonWalletAddress, balance } = useFaucetJettonContract();
+  const { burn, mint, jettonWalletAddress, balance } = useFaucetJettonContract();
 
   return (
     <Card title="Jetton">
@@ -32,6 +32,14 @@ export function Jetton() {
           }}
         >
           Get jettons from faucet
+        </Button>
+        <Button
+          disabled={!connected}
+          onClick={async () => {
+            burn(toNano(99));
+          }}
+        >
+          Burn
         </Button>
       </FlexBoxCol>
     </Card>
